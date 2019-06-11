@@ -11,6 +11,7 @@ class WordsClusterSpecMultiJvmNode1 extends CounterClusterSpec
 class WordsClusterSpecMultiJvmNode2 extends CounterClusterSpec
 
 class CounterClusterSpec extends MultiNodeSpec(CounterClusterSpecConfig)
+  with PersistenceCleanup
   with STMultiNodeSpec
   with ImplicitSender {
 
@@ -22,6 +23,14 @@ class CounterClusterSpec extends MultiNodeSpec(CounterClusterSpecConfig)
   val node2Address = node(node2).address
 
   //muteDeadLetters(classOf[Any])(system)
+
+  override def atStartup(): Unit = {
+    deleteStorageLocations()
+  }
+
+  override def afterTermination(): Unit = {
+    deleteStorageLocations()
+  }
 
   "A Counter cluster" must {
 

@@ -14,7 +14,8 @@ libraryDependencies ++= {
     "org.iq80.leveldb"  % "leveldb"                % "0.11",
     "com.typesafe.akka" %% "akka-testkit"               % akkaVersion   % Test,
     "com.typesafe.akka" %% "akka-multi-node-testkit"    % akkaVersion   % Test,
-    "org.scalatest"     %% "scalatest"                  % "3.0.7"       % Test
+    "org.scalatest"     %% "scalatest"                  % "3.0.7"       % Test,
+    "commons-io"        %  "commons-io"                 % "2.4",
   )
 }
 
